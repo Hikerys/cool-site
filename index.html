@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>дети сергея камаза — Официальный сайт чата</title>
+    <meta name="description" content="История, архив аватарок и правила нашего лампового комьюнити. Вступай к нам!">
+    
+    <link rel="icon" type="image/png" href="ava/favicon.png">
+
+    <meta property="og:title" content="дети сергея камаза">
+    <meta property="og:description" content="Всё о нашем чате в одном месте">
+    <meta property="og:image" content="ava/ava6.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================
+           ЦВЕТОВАЯ ПАЛИТРА И ПЕРЕМЕННЫЕ
+           (Сгенерировано на основе изображения)
+           ============================ */
+        :root {
+            --bg-color: #1a181b; /* Темный фон (отсылка к темным участкам кирпичной стены) */
+            --card-bg: #262428; /* Цвет карточек (немного светлее фона) */
+            --accent-color: #8fa8d6; /* Приятный серо-голубой (цвет галстуков) */
+            --accent-hover: #7591c2; /* Цвет акцента при наведении */
+            --text-main: #eaeaea; /* Основной светлый текст */
+            --text-muted: #a3a3a3; /* Второстепенный текст */
+            --border-radius: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        /* ============================
+           БАЗОВЫЕ СТИЛИ
+           ============================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ============================
+           ТИПОГРАФИКА
+           ============================ */
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            color: var(--accent-color);
+            border-bottom: 2px solid rgba(143, 168, 214, 0.2);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 20px;
+            color: var(--text-main);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* ============================
+           КНОПКИ
+           ============================ */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #111;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(143, 168, 214, 0.3);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(143, 168, 214, 0.5);
+        }
+
+        /* ============================
+           СЕКЦИИ И КАРТОЧКИ
+           ============================ */
+        section {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ============================
+           ГЛАВНЫЙ ЭКРАН (HERO)
+           ============================ */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: transparent;
+            box-shadow: none;
+            padding: 20px 0 40px 0;
+        }
+
+        .avatar-main-wrapper {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 25px;
+            box-shadow: 0 0 25px rgba(143, 168, 214, 0.2);
+        }
+
+        .avatar-main-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: #333; /* Заглушка пока нет фото */
+        }
+
+        /* ============================
+           ГАЛЕРЕЯ АВАТАРОК
+           ============================ */
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .avatar-item {
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #333;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .avatar-item:hover {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .avatar-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ============================
+           АККОРДЕОН (ПРАВИЛА)
+           ============================ */
+        .warning-text {
+            color: #d68f8f;
+            font-weight: 700;
+            background: rgba(214, 143, 143, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #d68f8f;
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        summary {
+            padding: 15px 20px;
+            font-weight: 500;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        details[open] summary::after {
+            content: '−';
+        }
+
+        details[open] {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .details-content {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+        }
+
+        .sanctions {
+            margin-top: 20px;
+            background: rgba(143, 168, 214, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px dashed var(--accent-color);
+        }
+
+        /* ============================
+           ПОДВАЛ (FOOTER)
+           ============================ */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: var(--accent-hover);
+        }
+
+        .footer-links {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================
+           АДАПТИВНОСТЬ
+           ============================ */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .container { padding: 20px 15px; }
+            section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <section class="hero">
+            <div class="avatar-main-wrapper">
+                <img src="ava/ava6.jpg" alt="image" border="0"></a>" alt="Главная аватарка чата">
+            </div>
+            <h1>дети сергея камаза</h1>
+            <a href="https://t.me/+Wv8dbF1w5qk0YTMy" class="btn" target="_blank" rel="noopener noreferrer">Вступить в чат</a>
+        </section>
+
+        <section>
+            <h2>История чата</h2>
+            <p>Чат был создан 10 декабря 2023 года. Пройдя путь от небольшой альтернативной группы, в мае 2024 года проект перешел к активному росту. Исторические рекорды пришлись на начало июня 2024 и 2025 годов, когда недельный актив превышал 50 тысяч сообщений.</p>
+            <p>В начале 2025 года (22 января) нас стало уже 100 человек, а 7 июня того же года мы достигли важной отметки — 1 000 000 сообщений.</p>
+        </section>
+
+        <section>
+            <h2>Архив аватарок</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">История наших лиц</p>
+            <div class="avatar-grid">
+                <div class="avatar-item"><img src="ava/ava1.jpg" alt="Архив 1"></div>
+                <div class="avatar-item"><img src="ava/ava2.jpg" alt="Архив 2"></div>
+                <div class="avatar-item"><img src="ava/ava3.jpg" alt="Архив 3"></div>
+                <div class="avatar-item"><img src="ava/ava4.jpg" alt="Архив 4"></div>
+                <div class="avatar-item"><img src="ava/ava5.jpg" alt="Архив 5"></div>
+                <div class="avatar-item"><img src="ava/ava6.jpg" alt="Архив 6"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Правила чата</h2>
+            <div class="warning-text">
+                ВНИМАНИЕ: Незнание правил не освобождает от ответственности. Правила могут изменяться без уведомления.
+            </div>
+
+            <details>
+                <summary>ОСНОВНЫЕ ПОЛОЖЕНИЯ</summary>
+                <div class="details-content">
+                    <p><strong>0.1. ПРАВО ВЛАДЕЛЬЦА:</strong> Владелец и Администрация имеют полное право отказать в заявке или забанить участника без объяснения причин, если сочтет его нежеланным для чата.</p>
+                    <p><strong>0.2. ЯЗЫКОВАЯ ПОЛИТИКА:</strong><br>
+                    — Основной язык: РУССКИЙ.<br>
+                    — Второстепенный: АНГЛИЙСКИЙ.<br>
+                    — Злоупотребление другими языками (постоянное общение, флуд) карается варном.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>НАРУШЕНИЯ, ВЕДУЩИЕ К САНКЦИЯМ</summary>
+                <div class="details-content">
+                    <p><em>В чате действует принцип «Можно всё, но знайте меру». Черный юмор и оскорбления допускаются, но не должны переходить в травлю или реальные угрозы.</em></p>
+                    
+                    <p><strong>РАСИЗМ, СЕКСИЗМ И ДИСКРИМИНАЦИЯ:</strong><br>
+                    1.1. Строго наказуемы: Серьезная пропаганда ненависти или превосходства, а также целенаправленная травля участника по признаку расы, национальности, гендера, религии и т.д.</p>
+                    
+                    <p><strong>18+ И НЕПРИЕМЛЕМЫЙ КОНТЕНТ:</strong><br>
+                    2.1. СТРОГО ЗАПРЕЩЕНЫ (БАН): ЦП, расчлененка (гуро), снафф, зоофилия, экстремальное насилие.<br>
+                    2.2. Обязательно под спойлер: Обычные материалы 18+ (порно/эротика) и контент, вызывающий отвращение.</p>
+                    
+                    <p><strong>МЕДИА И ФЛУД:</strong><br>
+                    3.1. Раздражающие аудио: Голосовые/видео со стонами, криками, резкими звуками. Допустимо только с текстовым предупреждением.<br>
+                    3.2. Спам/Флуд: Многократное повторение сообщений, бессмысленные символы, использование ботов.</p>
+                    
+                    <p><strong>ОСКОРБЛЕНИЯ И АГРЕССИЯ:</strong><br>
+                    4.1. Наказуемы: Жестокие личные оскорбления и реальные угрозы.<br>
+                    4.2. Наказуемо: Провокации, перерастающие в систематическую травлю.</p>
+
+                    <p><strong>КОНФИДЕНЦИАЛЬНОСТЬ И ДЕАНОН:</strong><br>
+                    5.1. СТРОГО ЗАПРЕЩЕН (БАН): Слив любых личных данных без разрешения.</p>
+
+                    <p><strong>РЕКЛАМА И КОММЕРЦИЯ:</strong><br>
+                    6.1. Запрещено без согласования.<br>
+                    6.2. Разрешены некоммерческие ссылки.</p>
+
+                    <p><strong>АДМИНИСТРАЦИЯ:</strong><br>
+                    7.1. Неподчинение.<br>
+                    7.2. Пререкания: Публичные споры в адрес действий Администрации.</p>
+
+                    <p><strong>ОБХОД ПРАВИЛ:</strong><br>
+                    8.1. Любые действия, которые Администрация сочтет деструктивными.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>ПРАВА УЧАСТНИКОВ</summary>
+                <div class="details-content">
+                    <p><strong>АПЕЛЛЯЦИЯ И ОБЖАЛОВАНИЕ:</strong><br>
+                    9.1. Право на пересмотр.<br>
+                    9.2. Конструктивный формат жалобы.</p>
+                    
+                    <p><strong>КРИТИКА:</strong><br>
+                    10.1. Допускается конструктив.<br>
+                    10.2. Запрещен деструктивный хейт.</p>
+                    
+                    <p><strong>КАРЬЕРНЫЙ РОСТ:</strong><br>
+                    11.1. Набор в команду.<br>
+                    11.2. Порядок подачи в статье «Администрация».</p>
+                </div>
+            </details>
+
+            <div class="sanctions">
+                <h3>САНКЦИИ:</h3>
+                <ul>
+                    <li><strong>3 ВАРНА</strong> → МУТ на 3 дня.</li>
+                    <li><strong>Повторное накопление 3 ВАРНОВ</strong> → РАССМОТРЕНИЕ БАНА.</li>
+                </ul>
+                <p style="font-size: 0.9em; margin-top: 10px;"><em>(ВАЖНО: Администрация вправе применять санкции и определять срок наказания на свое усмотрение).</em></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Администрация</h2>
+            
+            <h3>Структура рангов</h3>
+            <ul>
+                <li><strong>Ранг 5</strong> — Владелец / Главный Администратор.</li>
+                <li><strong>Ранг 4</strong> — Старший Администратор.</li>
+                <li><strong>Ранг 3</strong> — Младший Администратор.</li>
+                <li><strong>Ранг 2</strong> — Модератор.</li>
+                <li><strong>Ранг 1</strong> — Активный участник (6400+ сообщений) и/или Бустер (3+ голоса).</li>
+                <li><strong>Ранг 0</strong> — Участник.</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.9em;"><em>Проверить состав администрации можно командой .кто админы</em></p>
+
+            <h3>Как стать Модератором</h3>
+            <p><strong>Требования:</strong> Активность более 1 месяца, хорошая репутация, доверие Владельца, знание команд бота (Ириса), возраст 13+.<br>
+            Отправьте заявку в ЛС Главному Администратору (<a href="https://t.me/Is_Kano" style="color: var(--accent-color);">@Is_Kano</a>).</p>
+
+            <h3>Норма активности в месяц</h3>
+            <ul>
+                <li><strong>Ранги 5, 4 и 0</strong> — не установлена.</li>
+                <li><strong>Ранг 3</strong> — более 1200 сообщений.</li>
+                <li><strong>Ранг 2</strong> — более 2800 сообщений.</li>
+                <li><strong>Ранг 1</strong> — более 6400 сообщений. (Норма не распространяется на бустеров).</li>
+            </ul>
+
+            <h3>Иерархия и обязанности</h3>
+            <ol style="margin-left: 20px; color: var(--text-muted);">
+                <li>Владелец управляет.</li>
+                <li>Старший Администратор — правая рука.</li>
+                <li>Младший помогает модераторам.</li>
+                <li>Модератор следит за порядком.</li>
+                <li>Активные участники/Бустеры имеют особый статус.</li>
+                <li>Участники — основа сообщества.</li>
+            </ol>
+        </section>
+
+        <footer>
+            <div class="footer-links">
+                <span>Владелец и создатель: <a href="https://t.me/Is_Kano">@Is_Kano</a></span>
+                <span>Второй владелец: <a href="https://t.me/Picechks">@Picechks</a></span>
+            </div>
+            <p style="margin-top: 15px;">
+                Присоединяйся к нам: <br>
+                <a href="https://t.me/+Wv8dbF1w5qk0YTMy" style="font-weight: bold; font-size: 1.1em;">https://t.me/+Wv8dbF1w5qk0YTMy</a>
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        const detailsElements = document.querySelectorAll("details");
+        detailsElements.forEach((targetDetail) => {
+            targetDetail.addEventListener("click", () => {
+                detailsElements.forEach((detail) => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute("open");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
