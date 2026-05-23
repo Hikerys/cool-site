@@ -20,28 +20,28 @@
 
     <style>
         :root {
-            --bg-color: #0f0e11;
-            --bg-secondary: #161419;
-            --card-bg: #1e1c22;
-            --card-bg-hover: #252329;
+            --bg-color: #0d0c0f;
+            --bg-secondary: #131116;
+            --card-bg: rgba(30, 28, 34, 0.6);
+            --card-bg-hover: rgba(37, 35, 41, 0.85);
             --accent-color: #8fa8d6;
             --accent-hover: #a3bce6;
             --accent-dark: #7591c2;
-            --accent-glow: rgba(143, 168, 214, 0.15);
-            --accent-glow-strong: rgba(143, 168, 214, 0.3);
-            --text-main: #eaeaea;
-            --text-muted: #8a8a8a;
-            --text-secondary: #b0b0b0;
-            --danger: #e06b6b;
-            --danger-bg: rgba(224, 107, 107, 0.08);
+            --accent-glow: rgba(143, 168, 214, 0.12);
+            --accent-glow-strong: rgba(143, 168, 214, 0.25);
+            --text-main: #f3f3f3;
+            --text-muted: #85828a;
+            --text-secondary: #adabb1;
+            --danger: #e27474;
+            --danger-bg: rgba(226, 116, 116, 0.08);
             --success: #6be08a;
-            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-subtle: rgba(255, 255, 255, 0.05);
             --border-radius: 20px;
             --border-radius-sm: 12px;
-            --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-fast: all 0.2s ease;
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --shadow-card-hover: 0 16px 48px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            --transition-fast: all 0.15s ease;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.4);
+            --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
 
         * {
@@ -70,6 +70,7 @@
             overflow-x: hidden;
         }
 
+        /* Фоновые элементы */
         .bg-particles {
             position: fixed;
             top: 0;
@@ -84,50 +85,48 @@
         .bg-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 20s ease-in-out infinite;
+            filter: blur(100px);
+            opacity: 0.35;
+            animation: float 25s ease-in-out infinite;
+            will-change: transform;
         }
 
         .bg-orb:nth-child(1) {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(143, 168, 214, 0.12), transparent);
-            top: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(143, 168, 214, 0.15), transparent);
+            top: -150px;
             right: -100px;
             animation-delay: 0s;
         }
 
         .bg-orb:nth-child(2) {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(143, 168, 214, 0.08), transparent);
-            bottom: 20%;
-            left: -80px;
-            animation-delay: -7s;
-            animation-duration: 25s;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(143, 168, 214, 0.1), transparent);
+            bottom: 10%;
+            left: -100px;
+            animation-delay: -5s;
+            animation-duration: 30s;
         }
 
         .bg-orb:nth-child(3) {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(214, 143, 180, 0.06), transparent);
-            top: 50%;
-            right: -50px;
-            animation-delay: -14s;
-            animation-duration: 30s;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(214, 143, 180, 0.08), transparent);
+            top: 45%;
+            right: -100px;
+            animation-delay: -10s;
+            animation-duration: 35s;
         }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -40px) scale(1.05); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(15px, 35px) scale(1.02); }
+            33% { transform: translate(30px, -50px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
         }
 
-        /* ============================
-           НАВИГАЦИЯ
-           ============================ */
+        /* Навигация */
         .navbar {
             position: fixed;
             top: 0;
@@ -139,7 +138,7 @@
         }
 
         .navbar.scrolled {
-            background: rgba(15, 14, 17, 0.85);
+            background: rgba(13, 12, 15, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle);
@@ -156,13 +155,13 @@
 
         .navbar-brand {
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--text-main);
             text-decoration: none;
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .navbar-brand .dot {
@@ -170,18 +169,17 @@
             height: 8px;
             border-radius: 50%;
             background: var(--accent-color);
-            animation: pulse-dot 2s ease-in-out infinite;
+            animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
         @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(143, 168, 214, 0.4); }
+            50% { opacity: 0.6; transform: scale(0.85); box-shadow: 0 0 0 6px rgba(143, 168, 214, 0); }
         }
 
-        /* Десктопные ссылки в навбаре */
         .nav-links-desktop {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             list-style: none;
         }
 
@@ -195,9 +193,15 @@
             transition: var(--transition-fast);
         }
 
-        .nav-links-desktop a:hover {
+        .nav-links-desktop a:hover,
+        .nav-links-desktop a.active {
             color: var(--text-main);
             background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links-desktop a.active {
+            color: var(--accent-color);
+            background: rgba(143, 168, 214, 0.08);
         }
 
         /* Кнопка мобильного меню */
@@ -241,14 +245,11 @@
             transform: rotate(-45deg) translate(4px, -4px);
         }
 
-        /* Мобильное полноэкранное меню — отдельный оверлей */
         .mobile-menu-overlay {
             display: none;
         }
 
-        /* ============================
-           КОНТЕЙНЕР
-           ============================ */
+        /* Основной контейнер */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -263,10 +264,10 @@
         }
 
         h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
             font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1.2;
+            letter-spacing: -1.2px;
+            line-height: 1.15;
         }
 
         h2 {
@@ -288,6 +289,7 @@
             justify-content: center;
             font-size: 1.1rem;
             flex-shrink: 0;
+            border: 1px solid rgba(143, 168, 214, 0.1);
         }
 
         h3 {
@@ -317,15 +319,13 @@
             font-weight: 600;
         }
 
-        /* ============================
-           КНОПКИ
-           ============================ */
+        /* Кнопки */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, var(--accent-color), #7591c2);
-            color: #0f0e11;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+            color: #0d0c0f;
             font-weight: 700;
             text-decoration: none;
             padding: 16px 36px;
@@ -336,6 +336,8 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            border: none;
+            cursor: pointer;
         }
 
         .btn::before {
@@ -345,7 +347,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
             transition: left 0.5s ease;
         }
 
@@ -356,6 +358,7 @@
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 30px var(--accent-glow-strong);
+            filter: brightness(1.05);
         }
 
         .btn:active {
@@ -367,9 +370,9 @@
         }
 
         .btn-secondary {
-            background: rgba(143, 168, 214, 0.1);
+            background: rgba(143, 168, 214, 0.08);
             color: var(--accent-color);
-            border: 1px solid rgba(143, 168, 214, 0.2);
+            border: 1px solid rgba(143, 168, 214, 0.15);
             box-shadow: none;
             padding: 12px 24px;
             font-size: 0.9rem;
@@ -380,16 +383,16 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(143, 168, 214, 0.18);
-            border-color: rgba(143, 168, 214, 0.4);
+            background: rgba(143, 168, 214, 0.15);
+            border-color: rgba(143, 168, 214, 0.35);
             box-shadow: none;
         }
 
-        /* ============================
-           СЕКЦИИ И КАРТОЧКИ
-           ============================ */
+        /* Секции */
         section {
             background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 36px;
             border-radius: var(--border-radius);
             margin-bottom: 24px;
@@ -397,7 +400,7 @@
             border: 1px solid var(--border-subtle);
             transition: var(--transition);
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
 
         section.visible {
@@ -406,12 +409,12 @@
         }
 
         section:hover {
-            border-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: var(--shadow-card-hover);
+            background: var(--card-bg-hover);
         }
 
-        /* ============================
-           HERO
-           ============================ */
+        /* Hero */
         .hero {
             display: flex;
             flex-direction: column;
@@ -420,25 +423,29 @@
             background: transparent;
             box-shadow: none;
             border: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
             padding: 60px 0 50px 0;
             position: relative;
         }
 
         .hero:hover {
             border-color: transparent;
+            background: transparent;
+            box-shadow: none;
         }
 
         .hero-glow {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
-            background: radial-gradient(circle, var(--accent-glow), transparent);
+            background: radial-gradient(circle, var(--accent-glow-strong), transparent);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
-            filter: blur(60px);
+            filter: blur(50px);
         }
 
         .avatar-main-wrapper {
@@ -456,7 +463,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            background-color: #333;
+            background-color: #1e1c22;
         }
 
         .hero-subtitle {
@@ -502,10 +509,6 @@
             font-weight: 600;
         }
 
-        .stat-live {
-            position: relative;
-        }
-
         .stat-live .live-dot {
             display: inline-block;
             width: 6px;
@@ -518,9 +521,7 @@
             box-shadow: 0 0 8px rgba(107, 224, 138, 0.4);
         }
 
-        /* ============================
-           ТАЙМЛАЙН
-           ============================ */
+        /* Таймлайн */
         .timeline {
             position: relative;
             padding-left: 32px;
@@ -574,9 +575,7 @@
             font-size: 0.95rem;
         }
 
-        /* ============================
-           ГАЛЕРЕЯ АВАТАРОК
-           ============================ */
+        /* Галерея */
         .avatar-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -588,7 +587,7 @@
             aspect-ratio: 1 / 1;
             border-radius: var(--border-radius-sm);
             overflow: hidden;
-            background-color: #252329;
+            background-color: #1e1c22;
             border: 2px solid transparent;
             transition: var(--transition);
             cursor: pointer;
@@ -599,7 +598,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
             opacity: 0;
             transition: var(--transition);
         }
@@ -610,7 +609,7 @@
 
         .avatar-item:hover {
             border-color: var(--accent-color);
-            transform: scale(1.05);
+            transform: scale(1.04);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
@@ -622,7 +621,7 @@
         }
 
         .avatar-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         /* Лайтбокс */
@@ -630,15 +629,15 @@
             position: fixed;
             inset: 0;
             z-index: 2000;
-            background: rgba(0, 0, 0, 0.92);
+            background: rgba(8, 7, 10, 0.95);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
-            cursor: zoom-out;
         }
 
         .lightbox.active {
@@ -646,28 +645,67 @@
             visibility: visible;
         }
 
-        .lightbox img {
+        .lightbox-wrapper {
+            position: relative;
             max-width: 90%;
-            max-height: 90vh;
+            max-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 85vh;
             border-radius: var(--border-radius);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            transform: scale(0.9);
+            transform: scale(0.95);
             transition: var(--transition);
+            object-fit: contain;
         }
 
         .lightbox.active img {
             transform: scale(1);
         }
 
+        .lightbox-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+            z-index: 2100;
+            user-select: none;
+        }
+
+        .lightbox-control:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .lightbox-prev { left: -68px; }
+        .lightbox-next { right: -68px; }
+
         .lightbox-close {
             position: absolute;
-            top: 24px;
-            right: 24px;
+            top: -56px;
+            right: 0;
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
@@ -678,12 +716,10 @@
         }
 
         .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        /* ============================
-           ПРАВИЛА — АККОРДЕОН
-           ============================ */
+        /* Правила — Аккордеон */
         .warning-text {
             color: var(--danger);
             font-weight: 600;
@@ -706,7 +742,7 @@
         }
 
         details {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border-subtle);
             border-radius: var(--border-radius-sm);
             margin-bottom: 8px;
@@ -719,8 +755,8 @@
         }
 
         details[open] {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(143, 168, 214, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(143, 168, 214, 0.25);
         }
 
         summary {
@@ -737,7 +773,7 @@
         }
 
         summary:hover {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.01);
         }
 
         summary::-webkit-details-marker {
@@ -769,11 +805,11 @@
             padding: 0 22px 22px 22px;
             color: var(--text-muted);
             font-size: 0.92rem;
-            animation: slideDown 0.3s ease;
+            animation: slideDown 0.25s ease;
         }
 
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-8px); }
+            from { opacity: 0; transform: translateY(-4px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -782,7 +818,7 @@
             background: var(--accent-glow);
             padding: 24px;
             border-radius: var(--border-radius-sm);
-            border: 1px solid rgba(143, 168, 214, 0.15);
+            border: 1px solid rgba(143, 168, 214, 0.12);
         }
 
         .sanctions h3 {
@@ -790,9 +826,55 @@
             color: var(--accent-color);
         }
 
-        /* ============================
-           АДМИНИСТРАЦИЯ — РАНГИ
-           ============================ */
+        /* Интерактивное копирование команд */
+        .copyable-code {
+            background: rgba(255,255,255,0.06); 
+            padding: 3px 8px; 
+            border-radius: 6px; 
+            font-family: monospace;
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: var(--transition-fast);
+            user-select: all;
+        }
+
+        .copyable-code:hover {
+            background: rgba(143, 168, 214, 0.15);
+            color: var(--text-main);
+            border-color: rgba(143, 168, 214, 0.2);
+        }
+
+        /* Всплывающая подсказка при копировании */
+        .copy-tooltip {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: #252329;
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-family: sans-serif;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .copyable-code:active .copy-tooltip,
+        .copy-tooltip.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Администрация — Ранги */
         .rank-grid {
             display: grid;
             gap: 8px;
@@ -805,14 +887,14 @@
             gap: 14px;
             padding: 14px 18px;
             border-radius: var(--border-radius-sm);
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border-subtle);
             transition: var(--transition-fast);
         }
 
         .rank-item:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.08);
         }
 
         .rank-badge {
@@ -827,12 +909,12 @@
             flex-shrink: 0;
         }
 
-        .rank-5 .rank-badge { background: linear-gradient(135deg, #ffd700, #ff9500); color: #1a1a1a; }
+        .rank-5 .rank-badge { background: linear-gradient(135deg, #ffd700, #ff9500); color: #111; }
         .rank-4 .rank-badge { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
         .rank-3 .rank-badge { background: linear-gradient(135deg, #e67e22, #d35400); color: white; }
         .rank-2 .rank-badge { background: linear-gradient(135deg, #3498db, #2980b9); color: white; }
         .rank-1 .rank-badge { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; }
-        .rank-0 .rank-badge { background: rgba(255, 255, 255, 0.1); color: var(--text-muted); }
+        .rank-0 .rank-badge { background: rgba(255, 255, 255, 0.08); color: var(--text-muted); }
 
         .rank-info { flex: 1; }
 
@@ -856,7 +938,7 @@
         }
 
         .apply-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border-subtle);
             border-radius: var(--border-radius-sm);
             padding: 24px;
@@ -864,8 +946,8 @@
         }
 
         .apply-card:hover {
-            border-color: rgba(143, 168, 214, 0.3);
-            background: rgba(143, 168, 214, 0.03);
+            border-color: rgba(143, 168, 214, 0.25);
+            background: rgba(143, 168, 214, 0.02);
         }
 
         .apply-card h3 {
@@ -916,7 +998,7 @@
 
         .activity-table td {
             padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.01);
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
@@ -931,9 +1013,7 @@
             border-radius: 0 8px 8px 0;
         }
 
-        /* ============================
-           FOOTER
-           ============================ */
+        /* Футер */
         footer {
             text-align: center;
             padding: 40px 24px;
@@ -1003,9 +1083,7 @@
             font-weight: 700;
         }
 
-        /* ============================
-           BACK TO TOP
-           ============================ */
+        /* Кнопка «Наверх» */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1013,7 +1091,9 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: var(--card-bg);
+            background: rgba(30, 28, 34, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border-subtle);
             color: var(--accent-color);
             font-size: 1.2rem;
@@ -1040,25 +1120,30 @@
             border-color: rgba(143, 168, 214, 0.3);
         }
 
-        /* ============================
-           АДАПТИВНОСТЬ
-           ============================ */
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .lightbox-control {
+                width: 40px;
+                height: 40px;
+            }
+            .lightbox-prev { left: -10px; }
+            .lightbox-next { right: -10px; }
+            .lightbox-close { top: -48px; }
+        }
+
         @media (max-width: 700px) {
             .container { padding: 80px 16px 30px; }
             section { padding: 24px 20px; border-radius: 16px; }
             h2 { font-size: 1.3rem; }
 
-            /* Прячем десктопные ссылки */
             .nav-links-desktop {
                 display: none;
             }
 
-            /* Показываем кнопку-гамбургер */
             .mobile-menu-btn {
                 display: block;
             }
 
-            /* Мобильный оверлей меню */
             .mobile-menu-overlay {
                 display: flex;
                 position: fixed;
@@ -1067,7 +1152,7 @@
                 width: 100%;
                 height: 100%;
                 z-index: 1050;
-                background: rgba(15, 14, 17, 0.98);
+                background: rgba(13, 12, 15, 0.98);
                 backdrop-filter: blur(20px);
                 -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
@@ -1088,7 +1173,7 @@
             .mobile-menu-overlay a {
                 color: var(--text-muted);
                 text-decoration: none;
-                font-size: 1.2rem;
+                font-size: 1.25rem;
                 font-weight: 500;
                 padding: 14px 28px;
                 border-radius: 10px;
@@ -1131,19 +1216,23 @@
 <body>
 
     <!-- Фоновые элементы -->
-    <div class="bg-particles">
+    <div class="bg-particles" aria-hidden="true">
         <div class="bg-orb"></div>
         <div class="bg-orb"></div>
         <div class="bg-orb"></div>
     </div>
 
-    <!-- Лайтбокс -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр изображения">
-        <button class="lightbox-close" aria-label="Закрыть">&times;</button>
-        <img src="" alt="Увеличенное изображение">
+    <!-- Лайтбокс с кнопками навигации -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр изображения" aria-hidden="true">
+        <div class="lightbox-wrapper">
+            <button class="lightbox-close" aria-label="Закрыть">&times;</button>
+            <button class="lightbox-control lightbox-prev" aria-label="Предыдущее изображение">&#10094;</button>
+            <img src="" alt="Увеличенное изображение">
+            <button class="lightbox-control lightbox-next" aria-label="Следующее изображение">&#10095;</button>
+        </div>
     </div>
 
-    <!-- Мобильное меню — отдельный оверлей, не зависит от навбара -->
+    <!-- Мобильное меню -->
     <ul class="mobile-menu-overlay" id="mobileMenuOverlay">
         <li><a href="#history" onclick="closeMenu()">История</a></li>
         <li><a href="#avatars" onclick="closeMenu()">Аватарки</a></li>
@@ -1151,39 +1240,39 @@
         <li><a href="#admin" onclick="closeMenu()">Админы</a></li>
     </ul>
 
-    <!-- Кнопка мобильного меню — фиксирована отдельно от навбара -->
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">
+    <!-- Кнопка мобильного меню -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuOverlay">
         <span></span>
         <span></span>
         <span></span>
     </button>
 
     <!-- Навигация -->
-    <nav class="navbar" id="navbar">
+    <header class="navbar" id="navbar">
         <div class="navbar-inner">
             <a href="#" class="navbar-brand">
                 <span class="dot"></span>
                 дск
             </a>
-            <ul class="nav-links-desktop">
-                <li><a href="#history">История</a></li>
-                <li><a href="#avatars">Аватарки</a></li>
-                <li><a href="#rules">Правила</a></li>
-                <li><a href="#admin">Админы</a></li>
-            </ul>
+            <nav class="nav-links-desktop" aria-label="Основное меню">
+                <a href="#history">История</a>
+                <a href="#avatars">Аватарки</a>
+                <a href="#rules">Правила</a>
+                <a href="#admin">Админы</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Кнопка «Наверх» -->
-    <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
+    <button class="back-to-top" id="backToTop" aria-label="Вернуться наверх">↑</button>
 
-    <div class="container">
+    <main class="container">
 
         <!-- ======================== HERO ======================== -->
-        <section class="hero visible">
+        <section class="hero visible" id="hero-section">
             <div class="hero-glow"></div>
             <div class="avatar-main-wrapper">
-                <img src="ava/ava6.jpg" alt="Главная аватарка чата" loading="eager">
+                <img src="ava/ava6.jpg" alt="Текущая аватарка чата дети сергея камаза" loading="eager">
             </div>
             <p class="hero-subtitle">Официальный сайт чата</p>
             <h1>дети сергея камаза</h1>
@@ -1245,14 +1334,14 @@
                 <span class="section-icon">🖼</span>
                 Архив аватарок
             </h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 4px;">Нажмите на аватарку для увеличения</p>
-            <div class="avatar-grid">
-                <div class="avatar-item" data-lightbox><img src="ava/ava1.jpg" alt="Аватарка 1" loading="lazy"></div>
-                <div class="avatar-item" data-lightbox><img src="ava/ava2.jpg" alt="Аватарка 2" loading="lazy"></div>
-                <div class="avatar-item" data-lightbox><img src="ava/ava3.jpg" alt="Аватарка 3" loading="lazy"></div>
-                <div class="avatar-item" data-lightbox><img src="ava/ava4.jpg" alt="Аватарка 4" loading="lazy"></div>
-                <div class="avatar-item" data-lightbox><img src="ava/ava5.jpg" alt="Аватарка 5" loading="lazy"></div>
-                <div class="avatar-item" data-lightbox><img src="ava/ava6.jpg" alt="Аватарка 6 (текущая)" loading="lazy"></div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px;">Нажмите на аватарку для увеличения и перелистывания</p>
+            <div class="avatar-grid" id="avatarGrid">
+                <div class="avatar-item" data-index="0" data-lightbox><img src="ava/ava1.jpg" alt="Аватарка 1" loading="lazy"></div>
+                <div class="avatar-item" data-index="1" data-lightbox><img src="ava/ava2.jpg" alt="Аватарка 2" loading="lazy"></div>
+                <div class="avatar-item" data-index="2" data-lightbox><img src="ava/ava3.jpg" alt="Аватарка 3" loading="lazy"></div>
+                <div class="avatar-item" data-index="3" data-lightbox><img src="ava/ava4.jpg" alt="Аватарка 4" loading="lazy"></div>
+                <div class="avatar-item" data-index="4" data-lightbox><img src="ava/ava5.jpg" alt="Аватарка 5" loading="lazy"></div>
+                <div class="avatar-item" data-index="5" data-lightbox><img src="ava/ava6.jpg" alt="Аватарка 6 (текущая)" loading="lazy"></div>
             </div>
         </section>
 
@@ -1267,7 +1356,7 @@
                 <span>Незнание правил не освобождает от ответственности. Правила могут изменяться без уведомления.</span>
             </div>
 
-            <details>
+            <details name="rules-accordion">
                 <summary>Основные положения</summary>
                 <div class="details-content">
                     <p><strong>0.1. Право владельца:</strong> Владелец и Администрация имеют полное право отказать в заявке или забанить участника без объяснения причин, если сочтут его нежеланным для чата.</p>
@@ -1286,7 +1375,7 @@
                 </div>
             </details>
 
-            <details>
+            <details name="rules-accordion">
                 <summary>Нарушения, ведущие к санкциям</summary>
                 <div class="details-content">
                     <p><em>В чате действует принцип «Можно всё, но знайте меру». Чёрный юмор и оскорбления допускаются, но не должны переходить в травлю или реальные угрозы.</em></p>
@@ -1324,12 +1413,12 @@
                 </div>
             </details>
 
-            <details>
+            <details name="rules-accordion">
                 <summary>Права участников</summary>
                 <div class="details-content">
                     <h3>Апелляция и обжалование</h3>
                     <p><strong>9.1.</strong> Каждый участник имеет право на пересмотр наказания.</p>
-                    <p><strong>9.2.</strong> Жалобу необходимо подавать в конструктивном формате.</p>
+                    <p><strong>9.2.</strong> Жалобу необходимо поставлять в конструктивном формате.</p>
 
                     <h3>Критика</h3>
                     <p><strong>10.1.</strong> Конструктивная критика допускается и приветствуется.</p>
@@ -1407,7 +1496,12 @@
             </div>
 
             <p style="color: var(--text-muted); font-size: 0.85em; margin-bottom: 24px;">
-                <em>Проверить состав администрации можно командой <code style="background: rgba(255,255,255,0.08); padding: 2px 8px; border-radius: 4px; font-family: monospace;">.кто админы</code></em>
+                <em>Проверить состав администрации можно командой 
+                    <code class="copyable-code" onclick="copyIrisCommand(this, '.кто админы')">
+                        .кто админы
+                        <span class="copy-tooltip">Нажмите для копирования</span>
+                    </code>
+                </em>
             </p>
 
             <h3>Как вступить в команду</h3>
@@ -1480,7 +1574,7 @@
             <p class="footer-copy">© 2023 – <span class="footer-eternity">∞ навсегда</span></p>
         </footer>
 
-    </div>
+    </main>
 
     <script>
         // ============================
@@ -1499,31 +1593,51 @@
         setInterval(updateDaysCounter, 60000);
 
         // ============================
-        // Навигация — скролл
+        // Навигация, Скролл и Scroll Spy
         // ============================
         const navbar = document.getElementById('navbar');
         const backToTop = document.getElementById('backToTop');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const navLinks = document.querySelectorAll('.nav-links-desktop a');
+        const navSections = document.querySelectorAll('section');
+
+        function scrollSpy() {
+            const scrollPos = window.scrollY + 150;
+            navSections.forEach(section => {
+                if (section.id && scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${section.id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
 
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
             navbar.classList.toggle('scrolled', scrollY > 50);
             backToTop.classList.toggle('visible', scrollY > 400);
+            scrollSpy();
         });
 
         // ============================
         // Мобильное меню
         // ============================
         mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenuOverlay.classList.contains('open');
             mobileMenuBtn.classList.toggle('active');
             mobileMenuOverlay.classList.toggle('open');
-            document.body.style.overflow = mobileMenuOverlay.classList.contains('open') ? 'hidden' : '';
+            mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+            document.body.style.overflow = !isOpen ? 'hidden' : '';
         });
 
         function closeMenu() {
             mobileMenuBtn.classList.remove('active');
             mobileMenuOverlay.classList.remove('open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
         }
 
@@ -1532,50 +1646,87 @@
         });
 
         // ============================
-        // Аккордеон
+        // Функция быстрого копирования
         // ============================
-        const detailsElements = document.querySelectorAll("details");
-        detailsElements.forEach((targetDetail) => {
-            targetDetail.addEventListener("toggle", () => {
-                if (targetDetail.open) {
-                    detailsElements.forEach((detail) => {
-                        if (detail !== targetDetail && detail.open) {
-                            detail.removeAttribute("open");
-                        }
-                    });
-                }
+        function copyIrisCommand(element, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const tooltip = element.querySelector('.copy-tooltip');
+                const originalText = tooltip.textContent;
+                
+                tooltip.textContent = 'Скопировано!';
+                tooltip.classList.add('show');
+                
+                setTimeout(() => {
+                    tooltip.classList.remove('show');
+                    setTimeout(() => {
+                        tooltip.textContent = originalText;
+                    }, 200);
+                }, 1500);
+            }).catch(err => {
+                console.error('Ошибка копирования: ', err);
             });
-        });
+        }
 
         // ============================
-        // Лайтбокс
+        // Лайтбокс с переключением аватарок
         // ============================
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = lightbox.querySelector('img');
         const lightboxClose = lightbox.querySelector('.lightbox-close');
+        const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+        const lightboxNext = lightbox.querySelector('.lightbox-next');
+        const avatarItems = Array.from(document.querySelectorAll('[data-lightbox]'));
+        
+        let currentImgIndex = 0;
 
-        document.querySelectorAll('[data-lightbox]').forEach(item => {
+        function showImage(index) {
+            if (index < 0) index = avatarItems.length - 1;
+            if (index >= avatarItems.length) index = 0;
+            
+            currentImgIndex = index;
+            const imgElement = avatarItems[index].querySelector('img');
+            lightboxImg.src = imgElement.src;
+            lightboxImg.alt = imgElement.alt;
+        }
+
+        avatarItems.forEach((item, index) => {
             item.addEventListener('click', () => {
-                const img = item.querySelector('img');
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
+                showImage(index);
                 lightbox.classList.add('active');
+                lightbox.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
             });
         });
 
         function closeLightbox() {
             lightbox.classList.remove('active');
+            lightbox.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         }
 
         lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentImgIndex - 1);
         });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentImgIndex + 1);
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-wrapper')) {
                 closeLightbox();
+            }
+        });
+
+        // Клавиатурная навигация
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') showImage(currentImgIndex - 1);
+                if (e.key === 'ArrowRight') showImage(currentImgIndex + 1);
+            } else if (e.key === 'Escape') {
                 closeMenu();
             }
         });
@@ -1623,7 +1774,7 @@
                 function update(currentTime) {
                     const elapsed = currentTime - start;
                     const progress = Math.min(elapsed / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 4);
+                    const eased = 1 - Math.pow(1 - progress, 4); // Quartic ease out
                     const current = Math.round(eased * target);
 
                     counter.textContent = formatNumber(current) + suffix;
