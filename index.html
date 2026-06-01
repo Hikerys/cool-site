@@ -7,16 +7,35 @@
     <meta name="description" content="История, архив аватарок и правила нашего лампового комьюнити. Вступай к нам!">
     
     <link rel="icon" type="image/png" href="ava/favicon.png">
+    <link rel="preload" href="ava/ava6.webp" as="image" type="image/webp">
 
     <meta property="og:title" content="дети сергея камаза">
     <meta property="og:description" content="Всё о нашем чате в одном месте">
-    <meta property="og:image" content="ava/ava6.jpg">
+    <meta property="og:image" content="https://дети-сергея-камаза.рф/ava/ava6.jpg">
     <meta property="og:url" content="https://дети-сергея-камаза.рф/">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="дети сергея камаза">
+    <meta name="twitter:description" content="Всё о нашем чате в одном месте">
+    <meta name="twitter:image" content="https://дети-сергея-камаза.рф/ava/ava6.jpg">
+    <meta name="theme-color" content="#0d0c0f">
+    <link rel="canonical" href="https://дети-сергея-камаза.рф/">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "дети сергея камаза",
+        "description": "Официальный сайт чата — история, архив аватарок и правила",
+        "url": "https://дети-сергея-камаза.рф/",
+        "inLanguage": "ru"
+    }
+    </script>
 
     <style>
         :root {
@@ -68,6 +87,29 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 16px;
+            z-index: 9999;
+            padding: 10px 18px;
+            background: var(--accent-color);
+            color: #0d0c0f;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: top 0.2s ease;
+        }
+
+        .skip-link:focus {
+            top: 16px;
         }
 
         /* Фоновые элементы */
@@ -204,6 +246,22 @@
             background: rgba(143, 168, 214, 0.08);
         }
 
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark)) !important;
+            color: #0d0c0f !important;
+            font-weight: 700 !important;
+        }
+
+        .nav-cta:hover {
+            filter: brightness(1.08);
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-color)) !important;
+        }
+
+        .mobile-menu-overlay a.active {
+            color: var(--accent-color);
+            background: rgba(143, 168, 214, 0.08);
+        }
+
         /* Кнопка мобильного меню */
         .mobile-menu-btn {
             display: none;
@@ -247,6 +305,24 @@
 
         .mobile-menu-overlay {
             display: none;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .mobile-menu-overlay li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+        }
+
+        html.menu-open,
+        body.menu-open {
+            overflow: hidden;
+            height: 100%;
         }
 
         /* Основной контейнер */
@@ -578,8 +654,8 @@
         /* Галерея */
         .avatar-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
             margin-top: 20px;
         }
 
@@ -592,6 +668,23 @@
             transition: var(--transition);
             cursor: pointer;
             position: relative;
+            padding: 0;
+            display: block;
+            width: 100%;
+            font: inherit;
+            color: inherit;
+        }
+
+        .avatar-item picture,
+        .avatar-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .avatar-item-current {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 14px var(--accent-glow-strong);
         }
 
         .avatar-item::after {
@@ -617,6 +710,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
             transition: var(--transition);
         }
 
@@ -654,14 +748,27 @@
             justify-content: center;
         }
 
-        .lightbox img {
-            max-width: 100%;
-            max-height: 85vh;
+        .lightbox-frame {
+            width: min(85vmin, 640px);
+            height: min(85vmin, 640px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1e1c22;
             border-radius: var(--border-radius);
+            overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 0;
+            box-shadow: none;
             transform: scale(0.95);
             transition: var(--transition);
-            object-fit: contain;
         }
 
         .lightbox.active img {
@@ -717,6 +824,55 @@
 
         .lightbox-close:hover {
             background: rgba(255, 255, 255, 0.15);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -44px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .rules-actions {
+            margin-bottom: 16px;
+        }
+
+        .copyable-btn {
+            background: rgba(255,255,255,0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: monospace;
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: var(--transition-fast);
+            color: inherit;
+            font-size: inherit;
+        }
+
+        .copyable-btn:hover {
+            background: rgba(143, 168, 214, 0.15);
+            color: var(--text-main);
+            border-color: rgba(143, 168, 214, 0.2);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         /* Правила — Аккордеон */
@@ -869,6 +1025,7 @@
         }
 
         .copyable-code:active .copy-tooltip,
+        .copyable-btn:active .copy-tooltip,
         .copy-tooltip.show {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
@@ -1024,6 +1181,13 @@
             z-index: 1;
         }
 
+        .footer-outer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding-top: 0;
+            padding-bottom: 60px;
+        }
+
         footer a {
             color: var(--accent-color);
             text-decoration: none;
@@ -1122,13 +1286,34 @@
 
         /* Адаптивность */
         @media (max-width: 768px) {
+            .lightbox-wrapper {
+                max-width: min(calc(100vw - 120px), 320px);
+            }
+
             .lightbox-control {
                 width: 40px;
                 height: 40px;
             }
-            .lightbox-prev { left: -10px; }
-            .lightbox-next { right: -10px; }
-            .lightbox-close { top: -48px; }
+
+            .lightbox-prev { left: -52px; }
+            .lightbox-next { right: -52px; }
+
+            .lightbox-close {
+                top: -60px;
+                right: 0;
+                width: 40px;
+                height: 40px;
+                font-size: 1.35rem;
+            }
+
+            .lightbox-frame {
+                width: min(calc(100vw - 120px), 320px);
+                height: min(calc(100vw - 120px), 320px);
+            }
+
+            .lightbox-counter {
+                bottom: -36px;
+            }
         }
 
         @media (max-width: 700px) {
@@ -1147,11 +1332,15 @@
             .mobile-menu-overlay {
                 display: flex;
                 position: fixed;
-                top: 0;
-                left: 0;
+                inset: 0;
                 width: 100%;
+                min-width: 100vw;
                 height: 100%;
+                min-height: 100dvh;
                 z-index: 1050;
+                margin: 0;
+                padding: 24px;
+                box-sizing: border-box;
                 background: rgba(13, 12, 15, 0.98);
                 backdrop-filter: blur(20px);
                 -webkit-backdrop-filter: blur(20px);
@@ -1215,6 +1404,8 @@
 </head>
 <body>
 
+    <a href="#history" class="skip-link">Перейти к содержимому</a>
+
     <!-- Фоновые элементы -->
     <div class="bg-particles" aria-hidden="true">
         <div class="bg-orb"></div>
@@ -1223,21 +1414,25 @@
     </div>
 
     <!-- Лайтбокс с кнопками навигации -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр изображения" aria-hidden="true">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения" aria-hidden="true">
         <div class="lightbox-wrapper">
-            <button class="lightbox-close" aria-label="Закрыть">&times;</button>
+            <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть">&times;</button>
             <button class="lightbox-control lightbox-prev" aria-label="Предыдущее изображение">&#10094;</button>
-            <img src="" alt="Увеличенное изображение">
+            <div class="lightbox-frame">
+                <img src="" alt="Увеличенное изображение">
+            </div>
             <button class="lightbox-control lightbox-next" aria-label="Следующее изображение">&#10095;</button>
+            <div class="lightbox-counter" id="lightboxCounter" aria-live="polite"></div>
         </div>
     </div>
 
     <!-- Мобильное меню -->
     <ul class="mobile-menu-overlay" id="mobileMenuOverlay">
-        <li><a href="#history" onclick="closeMenu()">История</a></li>
-        <li><a href="#avatars" onclick="closeMenu()">Аватарки</a></li>
-        <li><a href="#rules" onclick="closeMenu()">Правила</a></li>
-        <li><a href="#admin" onclick="closeMenu()">Админы</a></li>
+        <li><a href="#history" class="nav-link" data-nav>История</a></li>
+        <li><a href="#avatars" class="nav-link" data-nav>Аватарки</a></li>
+        <li><a href="#rules" class="nav-link" data-nav>Правила</a></li>
+        <li><a href="#admin" class="nav-link" data-nav>Админы</a></li>
+        <li><a href="https://t.me/+Wv8dbF1w5qk0YTMy" class="nav-cta" target="_blank" rel="noopener noreferrer">Вступить</a></li>
     </ul>
 
     <!-- Кнопка мобильного меню -->
@@ -1255,10 +1450,11 @@
                 дск
             </a>
             <nav class="nav-links-desktop" aria-label="Основное меню">
-                <a href="#history">История</a>
-                <a href="#avatars">Аватарки</a>
-                <a href="#rules">Правила</a>
-                <a href="#admin">Админы</a>
+                <a href="#history" class="nav-link" data-nav>История</a>
+                <a href="#avatars" class="nav-link" data-nav>Аватарки</a>
+                <a href="#rules" class="nav-link" data-nav>Правила</a>
+                <a href="#admin" class="nav-link" data-nav>Админы</a>
+                <a href="https://t.me/+Wv8dbF1w5qk0YTMy" class="nav-link nav-cta" target="_blank" rel="noopener noreferrer">Вступить</a>
             </nav>
         </div>
     </header>
@@ -1272,7 +1468,10 @@
         <section class="hero visible" id="hero-section">
             <div class="hero-glow"></div>
             <div class="avatar-main-wrapper">
-                <img src="ava/ava6.jpg" alt="Текущая аватарка чата дети сергея камаза" loading="eager">
+                <picture>
+                    <source srcset="ava/ava6.webp" type="image/webp">
+                    <img src="ava/ava6.jpg" alt="Текущая аватарка чата дети сергея камаза" width="1500" height="1500" loading="eager" fetchpriority="high">
+                </picture>
             </div>
             <p class="hero-subtitle">Официальный сайт чата</p>
             <h1>дети сергея камаза</h1>
@@ -1336,12 +1535,24 @@
             </h2>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px;">Нажмите на аватарку для увеличения и перелистывания</p>
             <div class="avatar-grid" id="avatarGrid">
-                <div class="avatar-item" data-index="0" data-lightbox><img src="ava/ava1.jpg" alt="Аватарка 1" loading="lazy"></div>
-                <div class="avatar-item" data-index="1" data-lightbox><img src="ava/ava2.jpg" alt="Аватарка 2" loading="lazy"></div>
-                <div class="avatar-item" data-index="2" data-lightbox><img src="ava/ava3.jpg" alt="Аватарка 3" loading="lazy"></div>
-                <div class="avatar-item" data-index="3" data-lightbox><img src="ava/ava4.jpg" alt="Аватарка 4" loading="lazy"></div>
-                <div class="avatar-item" data-index="4" data-lightbox><img src="ava/ava5.jpg" alt="Аватарка 5" loading="lazy"></div>
-                <div class="avatar-item" data-index="5" data-lightbox><img src="ava/ava6.jpg" alt="Аватарка 6 (текущая)" loading="lazy"></div>
+                <button type="button" class="avatar-item" data-index="0" data-lightbox aria-label="Открыть аватарку 1">
+                    <picture><source srcset="ava/ava1.webp" type="image/webp"><img src="ava/ava1.jpg" alt="Аватарка 1" width="640" height="640" loading="lazy"></picture>
+                </button>
+                <button type="button" class="avatar-item" data-index="1" data-lightbox aria-label="Открыть аватарку 2">
+                    <picture><source srcset="ava/ava2.webp" type="image/webp"><img src="ava/ava2.jpg" alt="Аватарка 2" width="800" height="800" loading="lazy"></picture>
+                </button>
+                <button type="button" class="avatar-item" data-index="2" data-lightbox aria-label="Открыть аватарку 3">
+                    <picture><source srcset="ava/ava3.webp" type="image/webp"><img src="ava/ava3.jpg" alt="Аватарка 3" width="1080" height="1076" loading="lazy"></picture>
+                </button>
+                <button type="button" class="avatar-item" data-index="3" data-lightbox aria-label="Открыть аватарку 4">
+                    <picture><source srcset="ava/ava4.webp" type="image/webp"><img src="ava/ava4.jpg" alt="Аватарка 4" width="1500" height="1500" loading="lazy"></picture>
+                </button>
+                <button type="button" class="avatar-item" data-index="4" data-lightbox aria-label="Открыть аватарку 5">
+                    <picture><source srcset="ava/ava5.webp" type="image/webp"><img src="ava/ava5.jpg" alt="Аватарка 5" width="1500" height="1500" loading="lazy"></picture>
+                </button>
+                <button type="button" class="avatar-item avatar-item-current" data-index="5" data-lightbox aria-label="Открыть текущую аватарку">
+                    <picture><source srcset="ava/ava6.webp" type="image/webp"><img src="ava/ava6.jpg" alt="Аватарка 6 (текущая)" width="1500" height="1500" loading="lazy"></picture>
+                </button>
             </div>
         </section>
 
@@ -1356,7 +1567,11 @@
                 <span>Незнание правил не освобождает от ответственности. Правила могут изменяться без уведомления.</span>
             </div>
 
-            <details name="rules-accordion">
+            <div class="rules-actions">
+                <button type="button" class="btn btn-secondary" id="toggleAllRules">Развернуть все</button>
+            </div>
+
+            <details>
                 <summary>Основные положения</summary>
                 <div class="details-content">
                     <p><strong>0.1. Право владельца:</strong> Владелец и Администрация имеют полное право отказать в заявке или забанить участника без объяснения причин, если сочтут его нежеланным для чата.</p>
@@ -1375,7 +1590,7 @@
                 </div>
             </details>
 
-            <details name="rules-accordion">
+            <details>
                 <summary>Нарушения, ведущие к санкциям</summary>
                 <div class="details-content">
                     <p><em>В чате действует принцип «Можно всё, но знайте меру». Чёрный юмор и оскорбления допускаются, но не должны переходить в травлю или реальные угрозы.</em></p>
@@ -1413,7 +1628,7 @@
                 </div>
             </details>
 
-            <details name="rules-accordion">
+            <details>
                 <summary>Права участников</summary>
                 <div class="details-content">
                     <h3>Апелляция и обжалование</h3>
@@ -1497,10 +1712,10 @@
 
             <p style="color: var(--text-muted); font-size: 0.85em; margin-bottom: 24px;">
                 <em>Проверить состав администрации можно командой 
-                    <code class="copyable-code" onclick="copyIrisCommand(this, '.кто админы')">
+                    <button type="button" class="copyable-btn" data-copy=".кто админы" aria-label="Скопировать команду .кто админы">
                         .кто админы
                         <span class="copy-tooltip">Нажмите для копирования</span>
-                    </code>
+                    </button>
                 </em>
             </p>
 
@@ -1536,6 +1751,7 @@
 
             <h3>Норма активности в месяц</h3>
             <table class="activity-table">
+                <caption class="sr-only">Норма активности администрации по рангам</caption>
                 <thead>
                     <tr>
                         <th>Ранг</th>
@@ -1552,8 +1768,9 @@
             <p style="font-size: 0.8rem; color: var(--text-muted);">* Норма не распространяется на бустеров.</p>
         </section>
 
-        <!-- ======================== FOOTER ======================== -->
-        <footer>
+    </main>
+
+    <footer class="container footer-outer">
             <div class="footer-grid">
                 <div class="footer-person">
                     <div class="footer-role">Владелец и создатель</div>
@@ -1572,47 +1789,39 @@
                 </a>
             </div>
             <p class="footer-copy">© 2023 – <span class="footer-eternity">∞ навсегда</span></p>
-        </footer>
-
-    </main>
+    </footer>
 
     <script>
-        // ============================
-        // Живой счётчик дней
-        // ============================
         const CHAT_CREATED = new Date('2023-12-10T00:00:00');
 
         function updateDaysCounter() {
             const now = new Date();
-            const diff = now - CHAT_CREATED;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const days = Math.floor((now - CHAT_CREATED) / (1000 * 60 * 60 * 24));
             document.getElementById('daysCounter').textContent = days.toLocaleString('ru-RU');
         }
 
         updateDaysCounter();
         setInterval(updateDaysCounter, 60000);
 
-        // ============================
-        // Навигация, Скролл и Scroll Spy
-        // ============================
         const navbar = document.getElementById('navbar');
         const backToTop = document.getElementById('backToTop');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const navLinks = document.querySelectorAll('.nav-links-desktop a');
-        const navSections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('[data-nav]');
+        const navSections = document.querySelectorAll('section[id]');
 
         function scrollSpy() {
             const scrollPos = window.scrollY + 150;
+            let currentId = '';
+
             navSections.forEach(section => {
-                if (section.id && scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${section.id}`) {
-                            link.classList.add('active');
-                        }
-                    });
+                if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                    currentId = section.id;
                 }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
             });
         }
 
@@ -1623,96 +1832,133 @@
             scrollSpy();
         });
 
-        // ============================
-        // Мобильное меню
-        // ============================
-        mobileMenuBtn.addEventListener('click', () => {
-            const isOpen = mobileMenuOverlay.classList.contains('open');
-            mobileMenuBtn.classList.toggle('active');
-            mobileMenuOverlay.classList.toggle('open');
-            mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
-            document.body.style.overflow = !isOpen ? 'hidden' : '';
-        });
+        scrollSpy();
+
+        function setMenuOpen(isOpen) {
+            document.documentElement.classList.toggle('menu-open', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
 
         function closeMenu() {
             mobileMenuBtn.classList.remove('active');
             mobileMenuOverlay.classList.remove('open');
             mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
+            setMenuOpen(false);
         }
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenuOverlay.classList.contains('open');
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('open');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+            setMenuOpen(!isOpen);
+        });
+
+        mobileMenuOverlay.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 700) closeMenu();
+        });
 
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ============================
-        // Функция быстрого копирования
-        // ============================
-        function copyIrisCommand(element, text) {
-            navigator.clipboard.writeText(text).then(() => {
-                const tooltip = element.querySelector('.copy-tooltip');
-                const originalText = tooltip.textContent;
-                
-                tooltip.textContent = 'Скопировано!';
-                tooltip.classList.add('show');
-                
+        function copyText(text, tooltipEl) {
+            const showSuccess = () => {
+                const originalText = tooltipEl.textContent;
+                tooltipEl.textContent = 'Скопировано!';
+                tooltipEl.classList.add('show');
                 setTimeout(() => {
-                    tooltip.classList.remove('show');
-                    setTimeout(() => {
-                        tooltip.textContent = originalText;
-                    }, 200);
+                    tooltipEl.classList.remove('show');
+                    setTimeout(() => { tooltipEl.textContent = originalText; }, 200);
                 }, 1500);
-            }).catch(err => {
-                console.error('Ошибка копирования: ', err);
-            });
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(showSuccess).catch(() => fallbackCopy(text, showSuccess));
+            } else {
+                fallbackCopy(text, showSuccess);
+            }
         }
 
-        // ============================
-        // Лайтбокс с переключением аватарок
-        // ============================
+        function fallbackCopy(text, onSuccess) {
+            const area = document.createElement('textarea');
+            area.value = text;
+            area.style.position = 'fixed';
+            area.style.left = '-9999px';
+            document.body.appendChild(area);
+            area.select();
+            try {
+                document.execCommand('copy');
+                onSuccess();
+            } catch (e) {
+                console.error('Ошибка копирования:', e);
+            }
+            document.body.removeChild(area);
+        }
+
+        document.querySelectorAll('[data-copy]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                copyText(btn.getAttribute('data-copy'), btn.querySelector('.copy-tooltip'));
+            });
+        });
+
         const lightbox = document.getElementById('lightbox');
-        const lightboxImg = lightbox.querySelector('img');
-        const lightboxClose = lightbox.querySelector('.lightbox-close');
+        const lightboxImg = lightbox.querySelector('.lightbox-frame img');
+        const lightboxClose = document.getElementById('lightboxClose');
         const lightboxPrev = lightbox.querySelector('.lightbox-prev');
         const lightboxNext = lightbox.querySelector('.lightbox-next');
+        const lightboxCounter = document.getElementById('lightboxCounter');
         const avatarItems = Array.from(document.querySelectorAll('[data-lightbox]'));
-        
+        const lightboxFocusables = [lightboxClose, lightboxPrev, lightboxNext];
+
         let currentImgIndex = 0;
+        let lastFocusedElement = null;
+
+        function updateLightboxCounter() {
+            lightboxCounter.textContent = `${currentImgIndex + 1} / ${avatarItems.length}`;
+        }
 
         function showImage(index) {
             if (index < 0) index = avatarItems.length - 1;
             if (index >= avatarItems.length) index = 0;
-            
+
             currentImgIndex = index;
             const imgElement = avatarItems[index].querySelector('img');
-            lightboxImg.src = imgElement.src;
+            lightboxImg.src = imgElement.currentSrc || imgElement.src;
             lightboxImg.alt = imgElement.alt;
+            updateLightboxCounter();
         }
 
-        avatarItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                showImage(index);
-                lightbox.classList.add('active');
-                lightbox.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-            });
-        });
+        function openLightbox(index) {
+            lastFocusedElement = document.activeElement;
+            showImage(index);
+            lightbox.classList.add('active');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            lightboxClose.focus();
+        }
 
         function closeLightbox() {
             lightbox.classList.remove('active');
             lightbox.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
+            if (!mobileMenuOverlay.classList.contains('open')) {
+                document.body.style.overflow = '';
+            }
+            if (lastFocusedElement) lastFocusedElement.focus();
         }
 
+        avatarItems.forEach((item, index) => {
+            item.addEventListener('click', () => openLightbox(index));
+        });
+
         lightboxClose.addEventListener('click', closeLightbox);
-        lightboxPrev.addEventListener('click', (e) => {
-            e.stopPropagation();
-            showImage(currentImgIndex - 1);
-        });
-        lightboxNext.addEventListener('click', (e) => {
-            e.stopPropagation();
-            showImage(currentImgIndex + 1);
-        });
+        lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentImgIndex - 1); });
+        lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentImgIndex + 1); });
 
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox || e.target.classList.contains('lightbox-wrapper')) {
@@ -1720,7 +1966,21 @@
             }
         });
 
-        // Клавиатурная навигация
+        lightbox.addEventListener('keydown', (e) => {
+            if (e.key !== 'Tab') return;
+            const focusable = lightboxFocusables.filter(el => !el.disabled);
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        });
+
         document.addEventListener('keydown', (e) => {
             if (lightbox.classList.contains('active')) {
                 if (e.key === 'Escape') closeLightbox();
@@ -1731,11 +1991,23 @@
             }
         });
 
-        // ============================
-        // Scroll-анимация секций
-        // ============================
-        const sections = document.querySelectorAll('section:not(.hero)');
+        const toggleAllRules = document.getElementById('toggleAllRules');
+        const rulesDetails = document.querySelectorAll('#rules details');
 
+        function updateToggleAllLabel() {
+            const allOpen = Array.from(rulesDetails).every(d => d.open);
+            toggleAllRules.textContent = allOpen ? 'Свернуть все' : 'Развернуть все';
+        }
+
+        toggleAllRules.addEventListener('click', () => {
+            const allOpen = Array.from(rulesDetails).every(d => d.open);
+            rulesDetails.forEach(d => { d.open = !allOpen; });
+            updateToggleAllLabel();
+        });
+
+        rulesDetails.forEach(d => d.addEventListener('toggle', updateToggleAllLabel));
+
+        const sections = document.querySelectorAll('section:not(.hero)');
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1743,47 +2015,29 @@
                     sectionObserver.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         sections.forEach(section => sectionObserver.observe(section));
 
-        // ============================
-        // Анимация подсчёта чисел
-        // ============================
         function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number[data-target]');
-
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
+            document.querySelectorAll('.stat-number[data-target]').forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'), 10);
                 const suffix = counter.getAttribute('data-suffix') || '';
                 const duration = 2200;
                 const start = performance.now();
 
                 function formatNumber(num) {
-                    if (num >= 1000000) {
-                        const m = num / 1000000;
-                        return m.toFixed(1) + 'M';
-                    }
+                    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
                     if (num >= 1000) return Math.round(num / 1000).toLocaleString('ru-RU') + 'K';
                     return num.toLocaleString('ru-RU');
                 }
 
                 function update(currentTime) {
-                    const elapsed = currentTime - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 4); // Quartic ease out
-                    const current = Math.round(eased * target);
-
-                    counter.textContent = formatNumber(current) + suffix;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
-                    } else {
-                        counter.textContent = formatNumber(target) + suffix;
-                    }
+                    const progress = Math.min((currentTime - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 4);
+                    counter.textContent = formatNumber(Math.round(eased * target)) + suffix;
+                    if (progress < 1) requestAnimationFrame(update);
+                    else counter.textContent = formatNumber(target) + suffix;
                 }
 
                 requestAnimationFrame(update);
